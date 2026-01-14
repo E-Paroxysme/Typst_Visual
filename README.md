@@ -127,9 +127,8 @@ Si votre document utilise des marges différentes de 2.5cm :
 #show: ph("", start-x: 100pt, start-y: 100pt)
 ```
 
-## Démos
-
-<!-- TODO: Ajouter des GIFs de démonstration -->
+## Demonstration :
+https://github.com/E-Paroxysme/Typst_Visual/blob/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif
 
 ## Licence
 
