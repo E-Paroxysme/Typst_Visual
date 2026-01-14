@@ -1,11 +1,8 @@
 // Exemple d'utilisation du Position Helper
-#import "src/lib.typ": position-helper
+#import "src/lib.typ": ph
 
-// Active le helper en overlay - modifie "commands" pour déplacer le point
-#show: position-helper.with(
-  commands: "ddddddddddzzzzzzzzzz",  // ← TAPE ICI pour déplacer
-  show-grid: true,
-)
+// Syntaxe simplifiée !
+#show: ph("ddddddddddzzzzzzzzzz")
 
 // === TON CONTENU NORMAL EN DESSOUS ===
 

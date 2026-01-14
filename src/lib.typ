@@ -173,21 +173,18 @@
 /// Variable pour stocker les commandes (à modifier par l'utilisateur)
 #let ph-commands = state("ph-commands", "")
 
-/// Fonction principale - configure le helper en overlay sur la page
+/// Fonction courte pour usage rapide
 ///
 /// Usage:
 /// ```typst
-/// #import "@local/position-helper:0.1.0": position-helper
+/// #import "@local/position-helper:0.1.0": ph
 ///
-/// #show: position-helper.with(commands: "ddddzzzz")
+/// #show: ph("ddddzzzz")
 ///
 /// // Ton contenu normal ici
-/// = Mon titre
-/// Mon texte...
-/// #image("mon-image.png")
 /// ```
-#let position-helper(
-  commands: "",
+#let ph(
+  commands,
   start-x: 297.5pt,
   start-y: 421pt,
   step: 10,
@@ -195,18 +192,21 @@
   marker-color: red,
   show-grid: false,
   grid-step: 50pt,
-  body
 ) = {
-  set page(foreground: position-helper-overlay(
-    commands: commands,
-    start-x: start-x,
-    start-y: start-y,
-    step: step,
-    marker-size: marker-size,
-    marker-color: marker-color,
-    show-grid: show-grid,
-    grid-step: grid-step,
-  ))
-
-  body
+  (body) => {
+    set page(foreground: position-helper-overlay(
+      commands: commands,
+      start-x: start-x,
+      start-y: start-y,
+      step: step,
+      marker-size: marker-size,
+      marker-color: marker-color,
+      show-grid: show-grid,
+      grid-step: grid-step,
+    ))
+    body
+  }
 }
+
+/// Alias long pour compatibilité
+#let position-helper = ph
