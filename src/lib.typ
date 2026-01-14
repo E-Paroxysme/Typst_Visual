@@ -73,6 +73,7 @@
   marker-color: red,
   show-grid: false,
   grid-step: 50pt,
+  margin: 2.5cm,
 ) = {
   let pos = compute-position(
     commands: commands,
@@ -84,6 +85,10 @@
   let pos-x = pos.x
   let pos-y = pos.y
   let current-step = pos.step
+
+  // Coordonnées relatives à la zone de contenu (après marges)
+  let display-x = pos-x - margin
+  let display-y = pos-y - margin
 
   // Grille optionnelle
   if show-grid {
@@ -161,8 +166,8 @@
         #grid(
           columns: (auto, auto),
           gutter: 4pt,
-          [X:], [#calc.round(pos-x.pt(), digits: 1)],
-          [Y:], [#calc.round(pos-y.pt(), digits: 1)],
+          [X:], [#calc.round(display-x.pt(), digits: 1)],
+          [Y:], [#calc.round(display-y.pt(), digits: 1)],
           [Pas:], [#current-step],
         )
       ]
@@ -192,6 +197,7 @@
   marker-color: red,
   show-grid: false,
   grid-step: 50pt,
+  margin: 2.5cm,
 ) = {
   (body) => {
     set page(foreground: position-helper-overlay(
@@ -203,6 +209,7 @@
       marker-color: marker-color,
       show-grid: show-grid,
       grid-step: grid-step,
+      margin: margin,
     ))
     body
   }
