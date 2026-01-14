@@ -1,135 +1,120 @@
 # Position Helper
 
-Un package Typst interactif pour faciliter le positionnement d'éléments (annotations, barres, etc.) dans vos documents.
+An interactive Typst package to make positioning elements (annotations, bars, etc.) easier in your documents.
 
-## Le problème
+# Typst Visual
 
-Positionner précisément une annotation sur une image ou un graphique dans Typst est souvent frustrant. Il faut deviner les coordonnées, compiler, ajuster, recompiler...
+![Demo](https://raw.githubusercontent.com/E-Paroxysme/Typst_Visual/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif)
 
-## La solution
+## The problem
 
-Position Helper affiche un marqueur visuel que vous pouvez déplacer en tapant des commandes. Grâce à la preview live de Typst, vous voyez le marqueur bouger en temps réel et obtenez les coordonnées exactes à utiliser avec `place()`.
+Precisely positioning an annotation on an image or a chart in Typst is often frustrating. You have to guess coordinates, compile, adjust, recompile…
+
+## The solution
+
+Position Helper displays a visual marker that you can move by typing commands. Thanks to Typst’s live preview, you can see the marker move in real time and get the exact coordinates to use with `place()`.
 
 ## Installation
 
-### Package local
+### Local package
 
-```bash
-# Créer le dossier
-mkdir -p ~/.local/share/typst/packages/local/position-helper/0.1.0
+    # Create the directory
+    mkdir -p ~/.local/share/typst/packages/local/position-helper/0.1.0
 
-# Copier les fichiers
-cp -r src typst.toml ~/.local/share/typst/packages/local/position-helper/0.1.0/
-```
+    # Copy the files
+    cp -r src typst.toml ~/.local/share/typst/packages/local/position-helper/0.1.0/
 
-Puis dans vos documents :
-```typst
-#import "@local/position-helper:0.1.0": ph
-```
+Then in your documents:
 
-### Utilisation directe
+    #import "@local/position-helper:0.1.0": ph
 
-Si vous travaillez dans le dossier du projet :
-```typst
-#import "src/lib.typ": ph
-```
+### Direct usage
 
-## Utilisation
+If you are working inside the project directory:
 
-```typst
-#import "@local/position-helper:0.1.0": ph
+    #import "src/lib.typ": ph
 
-#show: ph("ddddzzzz")
+## Usage
 
-// Votre contenu normal
-= Mon titre
-#image("mon-image.png")
-```
+    #import "@local/position-helper:0.1.0": ph
 
-Le marqueur rouge se superpose à votre contenu. Modifiez la chaîne de commandes pour le déplacer.
+    #show: ph("ddddzzzz")
 
-## Contrôles (Layout ZQSD)
+    // Your normal content
+    = My title
+    #image("my-image.png")
 
-| Touche | Action |
-|--------|--------|
-| `z` | Monter |
-| `s` | Descendre |
-| `q` | Gauche |
-| `d` | Droite |
-| `a` | Réduire le pas (-1pt) |
-| `e` | Augmenter le pas (+1pt) |
+The red marker is overlaid on top of your content. Modify the command string to move it.
+
+## Controls (ZQSD layout)
+
+| Key | Action |
+|-----|--------|
+| `z` | Move up |
+| `s` | Move down |
+| `q` | Move left |
+| `d` | Move right |
+| `a` | Decrease step (-1pt) |
+| `e` | Increase step (+1pt) |
 | `r` | Reset position |
 
-## Paramètres
+## Parameters
 
-| Paramètre | Type | Défaut | Description |
-|-----------|------|--------|-------------|
-| `commands` | string | `""` | Chaîne de commandes (zqsd...) |
-| `start-x` | length | `297.5pt` | Position X initiale |
-| `start-y` | length | `421pt` | Position Y initiale |
-| `step` | integer | `10` | Pas de déplacement (en pt) |
-| `marker-size` | length | `8pt` | Taille du marqueur |
-| `marker-color` | color | `red` | Couleur du marqueur |
-| `show-grid` | boolean | `false` | Afficher une grille de référence |
-| `grid-step` | length | `50pt` | Espacement de la grille |
-| `margin` | length | `2.5cm` | Marge de la page (pour le calcul des coordonnées) |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `commands` | string | `""` | Command string (zqsd...) |
+| `start-x` | length | `297.5pt` | Initial X position |
+| `start-y` | length | `421pt` | Initial Y position |
+| `step` | integer | `10` | Movement step (in pt) |
+| `marker-size` | length | `8pt` | Marker size |
+| `marker-color` | color | `red` | Marker color |
+| `show-grid` | boolean | `false` | Show reference grid |
+| `grid-step` | length | `50pt` | Grid spacing |
+| `margin` | length | `2.5cm` | Page margin (used for coordinate calculation) |
 
 ## Workflow
 
-1. Ajoutez `#show: ph("")` en haut de votre document
-2. Tapez des commandes dans la chaîne (ex: `"ddddzzzz"`)
-3. Observez le marqueur se déplacer dans la preview
-4. Notez les coordonnées X et Y affichées
-5. Utilisez ces coordonnées avec `place()` :
+1. Add `#show: ph("")` at the top of your document
+2. Type commands in the string (e.g. `"ddddzzzz"`)
+3. Watch the marker move in the preview
+4. Note the displayed X and Y coordinates
+5. Use these coordinates with `place()`:
 
-```typst
-#place(
-  top + left,
-  dx: 150pt,
-  dy: 80pt,
-  [Mon annotation]
-)
-```
+    #place(
+      top + left,
+      dx: 150pt,
+      dy: 80pt,
+      [My annotation]
+    )
 
-6. Supprimez la ligne `#show: ph(...)` quand vous avez terminé
+6. Remove the `#show: ph(...)` line when you are done
 
-## Exemples
+## Examples
 
-### Basique
+### Basic
 
-```typst
-#import "@local/position-helper:0.1.0": ph
+    #import "@local/position-helper:0.1.0": ph
 
-#show: ph("ddddddddddssssssssss")
+    #show: ph("ddddddddddssssssssss")
 
-= Mon Document
-#lorem(100)
-```
+    = My Document
+    #lorem(100)
 
-### Avec grille
+### With grid
 
-```typst
-#show: ph("dddddddddd", show-grid: true)
-```
+    #show: ph("dddddddddd", show-grid: true)
 
-### Marges personnalisées
+### Custom margins
 
-Si votre document utilise des marges différentes de 2.5cm :
+If your document uses margins different from 2.5 cm:
 
-```typst
-#set page(margin: 1cm)
-#show: ph("dddddddddd", margin: 1cm)
-```
+    #set page(margin: 1cm)
+    #show: ph("dddddddddd", margin: 1cm)
 
-### Position de départ personnalisée
+### Custom start position
 
-```typst
-#show: ph("", start-x: 100pt, start-y: 100pt)
-```
+    #show: ph("", start-x: 100pt, start-y: 100pt)
 
-## Demonstration :
-https://github.com/E-Paroxysme/Typst_Visual/blob/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif
-
-## Licence
+## License
 
 MIT
