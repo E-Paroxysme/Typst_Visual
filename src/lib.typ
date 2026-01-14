@@ -146,47 +146,25 @@
     line(start: (0pt, 0pt), end: (marker-size * 2, 0pt), stroke: 0.5pt + marker-color)
   )
 
-  // Panneau d'information
+  // Panneau d'information (compact)
   place(
     top + right,
     dx: -10pt,
     dy: 10pt,
     block(
-      fill: white,
-      stroke: 1pt + luma(100),
-      inset: 8pt,
-      radius: 4pt,
+      fill: white.transparentize(10%),
+      stroke: 0.5pt + luma(150),
+      inset: 5pt,
+      radius: 3pt,
       [
-        #set text(size: 10pt)
-        #strong[Position Helper]
-
-        #v(4pt)
-
+        #set text(size: 8pt)
         #grid(
           columns: (auto, auto),
-          gutter: 8pt,
-          [*X:*], [#calc.round(pos-x.pt(), digits: 1)pt],
-          [*Y:*], [#calc.round(pos-y.pt(), digits: 1)pt],
-          [*Pas:*], [#current-step pt],
+          gutter: 4pt,
+          [X:], [#calc.round(pos-x.pt(), digits: 1)],
+          [Y:], [#calc.round(pos-y.pt(), digits: 1)],
+          [Pas:], [#current-step],
         )
-
-        #v(4pt)
-        #line(length: 100%, stroke: 0.5pt + luma(150))
-        #v(4pt)
-
-        #set text(size: 8pt)
-        *Contrôles:*\
-        ZQSD: déplacer\
-        A/E: pas -/+\
-        R: reset
-
-        #v(4pt)
-        #line(length: 100%, stroke: 0.5pt + luma(150))
-        #v(4pt)
-
-        #set text(size: 9pt)
-        *Code à copier:*\
-        #raw("place(\n  dx: " + str(calc.round(pos-x.pt(), digits: 1)) + "pt,\n  dy: " + str(calc.round(pos-y.pt(), digits: 1)) + "pt,\n  [...])")
       ]
     )
   )
