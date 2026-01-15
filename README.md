@@ -1,136 +1,119 @@
 # Position Helper
 
-Un package Typst interactif pour faciliter le positionnement d'éléments (annotations, barres, etc.) dans vos documents.
+An interactive Typst package to easily position elements (annotations, bars, etc.) in your documents.
 
-## Le problème
+## The Problem
 
-Positionner précisément une annotation sur une image ou un graphique dans Typst est souvent frustrant. Il faut deviner les coordonnées, compiler, ajuster, recompiler...
+Precisely positioning an annotation on an image or chart in Typst is often frustrating. You have to guess coordinates, compile, adjust, recompile...
 
-## La solution
+## The Solution
 
-Position Helper affiche un marqueur visuel que vous pouvez déplacer en tapant des commandes. Grâce à la preview live de Typst, vous voyez le marqueur bouger en temps réel et obtenez les coordonnées exactes à utiliser avec `place()`.
+Position Helper displays a visual marker that you can move by typing commands. Thanks to Typst's live preview, you see the marker move in real-time and get the exact coordinates to use with `place()`.
 
 ## Installation
 
-### Package local
-
-```bash
-# Créer le dossier
-mkdir -p ~/.local/share/typst/packages/local/position-helper/0.1.0
-
-# Copier les fichiers
-cp -r src typst.toml ~/.local/share/typst/packages/local/position-helper/0.1.0/
+Once published on Typst Universe:
+```typst
+#import "@preview/position-helper:0.1.0": ph
 ```
 
-Puis dans vos documents :
-```typst
-#import "@local/position-helper:0.1.0": ph
-```
-
-### Utilisation directe
-
-Si vous travaillez dans le dossier du projet :
-```typst
-#import "src/lib.typ": ph
-```
-
-## Utilisation
+## Usage
 
 ```typst
-#import "@local/position-helper:0.1.0": ph
+#import "@preview/position-helper:0.1.0": ph
 
 #show: ph("ddddzzzz")
 
-// Votre contenu normal
-= Mon titre
-#image("mon-image.png")
+// Your normal content
+= My Title
+#image("my-image.png")
 ```
 
-Le marqueur rouge se superpose à votre contenu. Modifiez la chaîne de commandes pour le déplacer.
+The red marker overlays your content. Modify the command string to move it.
 
-## Contrôles (Layout ZQSD)
+## Controls (ZQSD Layout)
 
-| Touche | Action |
-|--------|--------|
-| `z` | Monter |
-| `s` | Descendre |
-| `q` | Gauche |
-| `d` | Droite |
-| `a` | Réduire le pas (-1pt) |
-| `e` | Augmenter le pas (+1pt) |
+| Key | Action |
+|-----|--------|
+| `z` | Move up |
+| `s` | Move down |
+| `q` | Move left |
+| `d` | Move right |
+| `a` | Decrease step (-1pt) |
+| `e` | Increase step (+1pt) |
 | `r` | Reset position |
 
-## Paramètres
+## Parameters
 
-| Paramètre | Type | Défaut | Description |
-|-----------|------|--------|-------------|
-| `commands` | string | `""` | Chaîne de commandes (zqsd...) |
-| `start-x` | length | `297.5pt` | Position X initiale |
-| `start-y` | length | `421pt` | Position Y initiale |
-| `step` | integer | `10` | Pas de déplacement (en pt) |
-| `marker-size` | length | `8pt` | Taille du marqueur |
-| `marker-color` | color | `red` | Couleur du marqueur |
-| `show-grid` | boolean | `false` | Afficher une grille de référence |
-| `grid-step` | length | `50pt` | Espacement de la grille |
-| `margin` | length | `2.5cm` | Marge de la page (pour le calcul des coordonnées) |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `commands` | string | `""` | Command string (zqsd...) |
+| `start-x` | length | `297.5pt` | Initial X position |
+| `start-y` | length | `421pt` | Initial Y position |
+| `step` | integer | `10` | Movement step (in pt) |
+| `marker-size` | length | `8pt` | Marker size |
+| `marker-color` | color | `red` | Marker color |
+| `show-grid` | boolean | `false` | Display a reference grid |
+| `grid-step` | length | `50pt` | Grid spacing |
+| `margin` | length | `2.5cm` | Page margin (for coordinate calculation) |
 
 ## Workflow
 
-1. Ajoutez `#show: ph("")` en haut de votre document
-2. Tapez des commandes dans la chaîne (ex: `"ddddzzzz"`)
-3. Observez le marqueur se déplacer dans la preview
-4. Notez les coordonnées X et Y affichées
-5. Utilisez ces coordonnées avec `place()` :
+1. Add `#show: ph("")` at the top of your document
+2. Type commands in the string (e.g., `"ddddzzzz"`)
+3. Watch the marker move in the preview
+4. Note the displayed X and Y coordinates
+5. Use these coordinates with `place()`:
 
 ```typst
 #place(
   top + left,
   dx: 150pt,
   dy: 80pt,
-  [Mon annotation]
+  [My annotation]
 )
 ```
 
-6. Supprimez la ligne `#show: ph(...)` quand vous avez terminé
+6. Remove the `#show: ph(...)` line when you're done
 
-## Exemples
+## Examples
 
-### Basique
+### Basic
 
 ```typst
-#import "@local/position-helper:0.1.0": ph
+#import "@preview/position-helper:0.1.0": ph
 
 #show: ph("ddddddddddssssssssss")
 
-= Mon Document
+= My Document
 #lorem(100)
 ```
 
-### Avec grille
+### With Grid
 
 ```typst
 #show: ph("dddddddddd", show-grid: true)
 ```
 
-### Marges personnalisées
+### Custom Margins
 
-Si votre document utilise des marges différentes de 2.5cm :
+If your document uses margins different from 2.5cm:
 
 ```typst
 #set page(margin: 1cm)
 #show: ph("dddddddddd", margin: 1cm)
 ```
 
-### Position de départ personnalisée
+### Custom Starting Position
 
 ```typst
 #show: ph("", start-x: 100pt, start-y: 100pt)
 ```
 
-## Démos
+## Demos
 
-<!-- TODO: Ajouter des GIFs de démonstration -->
+<!-- TODO: Add demo GIFs -->
 
-## Licence
+## License
 
 MIT
