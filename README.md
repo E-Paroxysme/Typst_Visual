@@ -1,4 +1,4 @@
-# Position Helper
+# Coordy
 
 An interactive Typst package to easily position elements (annotations, bars, etc.) in your documents.
 
@@ -8,19 +8,19 @@ Precisely positioning an annotation on an image or chart in Typst is often frust
 
 ## The Solution
 
-Position Helper displays a visual marker that you can move by typing commands. Thanks to Typst's live preview, you see the marker move in real-time and get the exact coordinates to use with `place()`.
+Coordy displays a visual marker that you can move by typing commands. Thanks to Typst's live preview, you see the marker move in real-time and get the exact coordinates to use with `place()`.
 
 ## Installation
 
 Once published on Typst Universe:
 ```typst
-#import "@preview/position-helper:0.1.0": ph
+#import "@preview/coordy:0.1.0": ph
 ```
 
 ## Usage
 
 ```typst
-#import "@preview/position-helper:0.1.0": ph
+#import "@preview/coordy:0.1.0": ph
 
 #show: ph("ddddzzzz")
 
@@ -81,7 +81,7 @@ The red marker overlays your content. Modify the command string to move it.
 ### Basic
 
 ```typst
-#import "@preview/position-helper:0.1.0": ph
+#import "@preview/coordy:0.1.0": ph
 
 #show: ph("ddddddddddssssssssss")
 
@@ -112,7 +112,7 @@ If your document uses margins different from 2.5cm:
 
 ## Demo
 
-![Position Helper Demo](https://raw.githubusercontent.com/E-Paroxysme/Typst_Visual/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif)
+![Coordy Demo](https://raw.githubusercontent.com/E-Paroxysme/Typst_Visual/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif)
 
 ## License
 
