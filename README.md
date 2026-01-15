@@ -22,7 +22,7 @@ Once published on Typst Universe:
 ```typst
 #import "@preview/coordy:0.1.0": ph
 
-#show: ph("ddddzzzz")
+## Usage
 
 // Your normal content
 = My Title
@@ -57,7 +57,7 @@ The red marker overlays your content. Modify the command string to move it.
 | `grid-step` | length | `50pt` | Grid spacing |
 | `margin` | length | `2.5cm` | Page margin (for coordinate calculation) |
 
-## Workflow
+## Parameters
 
 1. Add `#show: ph("")` at the top of your document
 2. Type commands in the string (e.g., `"ddddzzzz"`)
@@ -83,7 +83,7 @@ The red marker overlays your content. Modify the command string to move it.
 ```typst
 #import "@preview/coordy:0.1.0": ph
 
-#show: ph("ddddddddddssssssssss")
+### Basic
 
 = My Document
 #lorem(100)
@@ -91,24 +91,19 @@ The red marker overlays your content. Modify the command string to move it.
 
 ### With Grid
 
-```typst
-#show: ph("dddddddddd", show-grid: true)
-```
+    = My Document
+    #lorem(100)
 
 ### Custom Margins
 
 If your document uses margins different from 2.5cm:
 
-```typst
-#set page(margin: 1cm)
-#show: ph("dddddddddd", margin: 1cm)
-```
+### Custom margins
 
 ### Custom Starting Position
 
-```typst
-#show: ph("", start-x: 100pt, start-y: 100pt)
-```
+    #set page(margin: 1cm)
+    #show: ph("dddddddddd", margin: 1cm)
 
 ## Demo
 
