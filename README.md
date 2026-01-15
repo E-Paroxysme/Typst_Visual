@@ -110,9 +110,9 @@ If your document uses margins different from 2.5cm:
 #show: ph("", start-x: 100pt, start-y: 100pt)
 ```
 
-## Demos
+## Demo
 
-<!-- TODO: Add demo GIFs -->
+![Position Helper Demo](https://raw.githubusercontent.com/E-Paroxysme/Typst_Visual/Version_ok/Video/Video_demo-ezgif.com-video-to-gif-converter.gif)
 
 ## License
 
